@@ -1,0 +1,28 @@
+.employee-list {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.employee-list__header { background: #5b9fc0; padding: 12px 16px; }
+.employee-list__title  { color: #fff; font-weight: 600; font-size: 16px; }
+.employee-list__body   { padding: 16px; display: flex; flex-direction: column; gap: 12px; flex: 1; overflow-y: auto; }
+.employee-list__add-btn {
+  width: 100%; border: 1px dashed #5b9fc0; color: #5b9fc0;
+  background: transparent; padding: 8px; border-radius: 6px;
+  font-size: 13px; cursor: pointer; transition: background 0.2s;
+}
+.employee-list__add-btn:hover { background: #ebf5fb; }
+.employee-list__filters { display: flex; align-items: center; gap: 8px; }
+.employee-list__filter-btn {
+  font-size: 12px; padding: 4px 10px; border-radius: 4px;
+  border: 1px solid #d0d0d0; background: #fff; cursor: pointer;
+  transition: all 0.2s; color: #555;
+}
+.employee-list__filter-btn:hover { border-color: #5b9fc0; color: #5b9fc0; }
+.employee-list__filter-btn--active { background: #5b9fc0; color: #fff; border-color: #5b9fc0; }
+.employee-list__count { margin-left: auto; font-size: 12px; color: #888; }
+.employee-list__cards { display: flex; flex-direction: column; gap: 8px; }

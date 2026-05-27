@@ -1,0 +1,20 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ant-btn-primary {
+  background-color: #5b9fc0 !important;
+  border-color: #5b9fc0 !important;
+}
+.ant-btn-primary:hover {
+  background-color: #4a8faf !important;
+  border-color: #4a8faf !important;
+}
+.ant-switch-checked {
+  background-color: #5b9fc0 !important;
+}

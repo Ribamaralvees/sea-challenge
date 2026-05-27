@@ -1,0 +1,21 @@
+.employee-form { flex: 1; background: #fff; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
+.employee-form__header { background: #5b9fc0; padding: 12px 16px; color: #fff; font-weight: 600; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.employee-form__back { background: transparent; border: 0; color: rgba(255,255,255,0.85); cursor: pointer; font-size: 16px; display: flex; align-items: center; padding: 0; }
+.employee-form__back:hover { color: #fff; }
+.employee-form__body { padding: 16px; display: flex; flex-direction: column; gap: 12px; overflow-y: auto; flex: 1; }
+.employee-form__toggle-row { display: flex; align-items: center; justify-content: space-between; background: #f5f5f5; padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+.employee-form__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.employee-form__section { border: 1px solid #e8e8e8; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.employee-form__section-title { font-size: 13px; font-weight: 600; color: #333; }
+.employee-form__add-activity { width: 100%; border: 1px dashed #d0d0d0; background: transparent; color: #888; font-size: 12px; padding: 6px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.employee-form__add-activity:hover { border-color: #5b9fc0; color: #5b9fc0; }
+.employee-form__save-btn { width: 100%; background: #5b9fc0; color: #fff; border: 0; padding: 10px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+.employee-form__save-btn:hover { background: #4a8faf; }
+.epi-row { background: #fafafa; border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.epi-row__field { display: flex; flex-direction: column; gap: 4px; }
+.epi-row__label { font-size: 11px; color: #888; }
+.epi-row__inline { display: flex; gap: 8px; align-items: flex-end; }
+.epi-row__add-btn { display: flex; align-items: center; gap: 4px; padding: 5px 10px; background: #5b9fc0; color: #fff; border: 0; border-radius: 4px; font-size: 12px; cursor: pointer; white-space: nowrap; height: 32px; transition: background 0.2s; }
+.epi-row__add-btn:hover { background: #4a8faf; }
+.epi-row__list { padding-left: 12px; display: flex; flex-direction: column; gap: 2px; }
+.epi-row__list li { font-size: 11px; color: #666; }

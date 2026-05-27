@@ -1,0 +1,16 @@
+.info-panel {
+  width: 220px;
+  min-width: 200px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.info-panel__text { font-size: 12px; color: #555; line-height: 1.65; }
+.info-panel__avatar-wrapper { display: flex; justify-content: center; margin-top: 32px; }
+.info-panel__avatar { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; }
+.info-panel__avatar svg { width: 100%; height: 100%; display: block; }

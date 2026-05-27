@@ -1,0 +1,5 @@
+.step-footer { background: #fff; border-top: 1px solid #e8e8e8; padding: 12px 24px; display: flex; align-items: center; justify-content: flex-end; gap: 24px; flex-shrink: 0; }
+.step-footer__left { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #555; }
+.step-footer__btn { background: #555; color: #fff; border: 0; padding: 8px 16px; border-radius: 4px; font-size: 13px; cursor: pointer; transition: background 0.2s; }
+.step-footer__btn:hover { background: #333; }
+.step-footer__btn--disabled { background: #ccc; cursor: not-allowed; }

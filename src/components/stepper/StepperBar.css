@@ -1,0 +1,50 @@
+.stepper-bar {
+  background: #fff;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.stepper-bar__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  min-width: 64px;
+  border: 0;
+  background: transparent;
+  outline: none;
+}
+.stepper-bar__icon-box {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: #d0d0d0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  transition: background 0.2s;
+}
+.stepper-bar__icon-box--active    { background: #5b9fc0; }
+.stepper-bar__icon-box--completed { background: #5b9fc0; opacity: 0.65; }
+.stepper-bar__step:hover .stepper-bar__icon-box:not(.stepper-bar__icon-box--active) { background: #aaa; }
+.stepper-bar__label {
+  font-size: 10px;
+  color: #999;
+  margin-top: 5px;
+  text-align: center;
+  white-space: nowrap;
+}
+.stepper-bar__label--active { color: #5b9fc0; font-weight: 600; }
+.stepper-bar__concluded { font-size: 9px; color: #5b9fc0; line-height: 1; }
+.stepper-bar__line {
+  flex: 1;
+  min-width: 12px;
+  border-top: 2px dashed #d0d0d0;
+  margin-bottom: 18px;
+}
+.stepper-bar__line--done { border-top-color: #5b9fc0; }
