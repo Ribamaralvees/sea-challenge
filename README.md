@@ -1,157 +1,159 @@
-# 🚀 SEA Tecnologia — Frontend Challenge: Guia Completo Passo a Passo
+# SEA Tecnologia — Desafio Frontend React
 
-> Stack: **React + TypeScript + Redux Toolkit + Ant Design + React Router + json-server + Axios**
-
----
-
-## 📋 ÍNDICE
-
-1. [Setup do Projeto](#1-setup-do-projeto)
-2. [Estrutura de Pastas](#2-estrutura-de-pastas)
-3. [Configurações Iniciais](#3-configurações-iniciais)
-4. [Backend Fake com json-server](#4-backend-fake-com-json-server)
-5. [Tipos TypeScript](#5-tipos-typescript)
-6. [Redux Store](#6-redux-store)
-7. [Serviço de API (Axios)](#7-serviço-de-api-axios)
-8. [Componentes de Layout](#8-componentes-de-layout)
-9. [Componente Stepper](#9-componente-stepper)
-10. [Tela Principal: Lista de Funcionários](#10-tela-principal-lista-de-funcionários)
-11. [Formulário: Adicionar Funcionário](#11-formulário-adicionar-funcionário)
-12. [Rodapé com Toggle de Etapa](#12-rodapé-com-toggle-de-etapa)
-13. [Página "Em Breve"](#13-página-em-breve)
-14. [Roteamento (App.tsx)](#14-roteamento-apptsx)
-15. [Estilos Globais](#15-estilos-globais)
-16. [Checklist Final](#16-checklist-final)
+Implementação do desafio técnico para a vaga de Desenvolvedor Frontend na SEA Tecnologia.
 
 ---
 
-## 1. Setup do Projeto
+## Sobre o projeto
 
-### 1.1 Criar o projeto com Vite
+O desafio consistia em implementar uma interface de gerenciamento de funcionários baseada em um protótipo Figma, com foco em fidelidade visual, boas práticas de React e arquitetura escalável.
+
+O sistema permite cadastrar funcionários com seus dados pessoais, EPIs por atividade e atestado de saúde, tudo dentro de um fluxo de etapas (stepper) com estado persistido.
+
+---
+
+## Stack e decisões técnicas
+
+| Tecnologia | Versão | Por que escolhi |
+|---|---|---|
+| React | 18 | Base do projeto conforme requisito |
+| TypeScript | 5 | Tipagem forte nos slices Redux e nas props dos componentes evitou vários bugs silenciosos durante o desenvolvimento |
+| Redux Toolkit | 2 | Requisito explícito do desafio. Usei `createAsyncThunk` para todas as operações assíncronas e `createSlice` para manter os reducers coesos |
+| Ant Design | 5 | Recomendado no desafio. Usei principalmente para `Form` com validações, `Switch`, `Select` e `Upload` |
+| React Router DOM | 6 | Roteamento declarativo — cada etapa do stepper tem sua própria URL, o que facilita deep linking e o controle de estado ativo |
+| Axios | 1.7 | Cliente HTTP com instância configurada para o `baseURL` do json-server |
+| json-server | 0.17 | Backend fake com REST completo (GET, POST, PUT, PATCH, DELETE) sem código de servidor |
+| Vite | 5 | Build tool mais rápida para o ecossistema React atualmente |
+
+---
+
+## Como rodar localmente
+
+**Pré-requisitos:** Node.js 18+
 
 ```bash
-npm create vite@latest sea-challenge -- --template react-ts
-cd sea-challenge
-```
+# 1. Instalar dependências
+npm install
 
-### 1.2 Instalar todas as dependências
-
-```bash
-# Dependências principais
-npm install antd @ant-design/icons
-npm install @reduxjs/toolkit react-redux
-npm install react-router-dom
-npm install axios
-npm install json-server
-
-# Tipos (se necessário)
-npm install -D @types/react-router-dom
-```
-
-### 1.3 Adicionar scripts no package.json
-
-```json
-{
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "server": "json-server --watch db.json --port 3001",
-    "dev:all": "concurrently \"npm run dev\" \"npm run server\""
-  }
-}
-```
-
-> Instale o concurrently: `npm install -D concurrently`
-
----
-
-## Estrutura de Pastas
-
-```
-sea-challenge/
-├── db.json                        ← Backend fake
-├── public/
-└── src/
-    ├── main.tsx                   ← Entry point
-    ├── App.tsx                    ← Rotas
-    ├── types/
-    │   └── index.ts               ← Interfaces TypeScript
-    ├── store/
-    │   ├── index.ts               ← Configura a store Redux
-    │   └── slices/
-    │       ├── employeeSlice.ts   ← CRUD de funcionários
-    │       └── stepSlice.ts       ← Estado das etapas
-    ├── services/
-    │   └── api.ts                 ← Axios + chamadas HTTP
-    ├── components/
-    │   ├── layout/
-    │   │   ├── MainLayout.tsx     ← Layout geral (sidebar + conteúdo)
-    │   │   └── Sidebar.tsx        ← Barra lateral com ícones
-    │   ├── stepper/
-    │   │   └── StepperBar.tsx     ← Barra de progresso no topo
-    │   ├── employee/
-    │   │   ├── EmployeeList.tsx   ← Lista de funcionários
-    │   │   ├── EmployeeCard.tsx   ← Card individual
-    │   │   └── EmployeeForm.tsx   ← Formulário add/edit
-    │   ├── common/
-    │   │   ├── StepFooter.tsx     ← Toggle "etapa concluída" + botão
-    │   │   └── EmBreve.tsx        ← Página placeholder
-    │   └── info/
-    │       └── InfoPanel.tsx      ← Painel esquerdo com texto
-    └── pages/
-        ├── Step1Page.tsx          ← Página da etapa 1 (funcionários)
-        └── EmBrevePage.tsx        ← Páginas de etapas futuras
-```
-
----
-
-## Checklist Final
-
-### ✅ Requisitos do desafio
-
-| Requisito | Status |
-|-----------|--------|
-| React + TypeScript | ✅ Vite + TSX |
-| Pixel perfect / responsivo | ✅ CSS fiel ao Figma |
-| Estado global com framework | ✅ Redux Toolkit |
-| GitHub privado | 📌 Você adiciona |
-| Biblioteca de estilos | ✅ Ant Design |
-| Redux (abstração correta) | ✅ Slices + Thunks |
-| Formulário com validações | ✅ Ant Design Form + rules |
-| Adicionar EPI | ✅ Dinâmico |
-| Adicionar Atividade | ✅ Dinâmico |
-| Persistir informações | ✅ json-server + PATCH/PUT |
-| Estado da etapa (concluída?) | ✅ Toggle no footer + PATCH |
-| Funcionar nos principais browsers | ✅ Vite build padrão |
-| Email no GitHub | 📌 Settings > Collaborators |
-| json-server (diferencial) | ✅ Configurado |
-| Links para todas as etapas | ✅ React Router |
-| "Em breve" nas outras etapas | ✅ EmBreve component |
-| Editar funcionário (ellipsis) | ✅ Dropdown menu + openEditForm |
-
-### 🏃 Comandos para rodar
-
-```bash
-# Terminal 1: Backend
-npm run server   # http://localhost:3001
-
-# Terminal 2: Frontend
-npm run dev      # http://localhost:5173
-
-# Ou ambos juntos:
+# 2. Rodar backend e frontend juntos
 npm run dev:all
 ```
 
-### 🎯 Dica final
+Ou em terminais separados:
 
-No README.md do repositório, explique:
-1. Como rodar o projeto
-2. Quais foram suas decisões técnicas
-3. O que você melhoraria com mais tempo
+```bash
+# Terminal 1 — API fake (http://localhost:3001)
+npm run server
 
-Isso demonstra maturidade técnica e é muito valorizado por recrutadores sênior.
+# Terminal 2 — Aplicação (http://localhost:5173)
+npm run dev
+```
 
 ---
 
-*Guia gerado para o Desafio Frontend SEA Tecnologia — Boa sorte no processo seletivo! 🚀*
+## Estrutura do projeto
+
+```
+src/
+├── components/
+│   ├── layout/         # MainLayout, Sidebar
+│   ├── stepper/        # StepperBar com navegação por URL
+│   ├── employee/       # EmployeeList, EmployeeCard, EmployeeForm
+│   ├── info/           # InfoPanel com avatar SVG
+│   └── common/         # StepFooter, EmBreve
+├── pages/              # Step1Page, EmBrevePage
+├── store/
+│   ├── slices/         # employeeSlice, stepSlice
+│   ├── hooks.ts        # useAppDispatch e useAppSelector tipados
+│   └── index.ts        # configureStore com RootState e AppDispatch
+├── services/
+│   └── api.ts          # Instância Axios + employeeService + stepService
+└── types/
+    └── index.ts        # Interfaces Employee, Step, EpiActivity, EPI
+```
+
+---
+
+## Funcionalidades implementadas
+
+- [x] Listagem de funcionários com contagem de ativos
+- [x] Filtro "Ver apenas ativos" com estado global
+- [x] Cadastro de funcionário com validações (CPF com regex, campos obrigatórios)
+- [x] Edição via menu de contexto (ellipsis `...`)
+- [x] Exclusão com remoção imediata da lista
+- [x] Toggle ativo/inativo no formulário e na listagem
+- [x] EPIs dinâmicos por atividade (adicionar múltiplas atividades e EPIs)
+- [x] Checkbox "O trabalhador não usa EPI"
+- [x] Upload de atestado de saúde (opcional)
+- [x] Stepper com 9 etapas navegáveis por URL
+- [x] Toggle "A etapa está concluída?" com PATCH no json-server
+- [x] Botão "Próximo passo" com navegação sequencial
+- [x] Sidebar com 8 itens, estado ativo baseado na rota atual
+- [x] Páginas "Em breve" para etapas e itens de menu ainda não implementados
+- [x] Persistência completa via json-server (REST API)
+
+---
+
+## Decisões de arquitetura
+
+**Redux apenas para estado global real**
+Não usei Redux para estado local de UI (como abrir/fechar um modal simples). O `showForm` e `editingEmployee` estão no slice porque múltiplos componentes precisam reagir a eles. Já o estado de campos do formulário fica no `Form` do Ant Design — misturar isso no Redux seria over-engineering.
+
+**Roteamento reflete o estado da UI**
+Cada etapa tem sua própria URL (`/step/1`, `/step/2`...). Isso significa que o usuário pode compartilhar ou favoritar uma etapa específica, e o botão voltar do browser funciona naturalmente. O `activeIndex` do stepper é derivado da URL em vez do Redux para evitar dessincronização.
+
+**`createAsyncThunk` com tipagem `unknown` no catch**
+Segui a recomendação do TypeScript strict: `err: unknown` + helper `getErrMsg(err)` em vez de `err: any`. Pequeno detalhe, mas demonstra atenção com segurança de tipos em código assíncrono.
+
+**SVG inline para o avatar**
+O placeholder de avatar é um SVG inline em vez de uma imagem externa. Não cria dependência de asset, escala perfeitamente em qualquer densidade de tela e permite trocar as cores via props quando necessário.
+
+**Serviço de API separado do Redux**
+Os `thunks` chamam funções do `employeeService` e `stepService` em vez de usar Axios diretamente. Isso facilita trocar a implementação (por exemplo, de json-server para uma API real) sem tocar nos slices.
+
+---
+
+## O que melhoraria com mais tempo
+
+- **Testes unitários** nos slices Redux com `@testing-library/react` e nos componentes críticos (formulário com validações, lógica de filtro)
+- **Máscara de CPF** em tempo real no input em vez de validar só no submit
+- **Confirmação antes de excluir** funcionário (modal de confirmação)
+- **Paginação ou scroll infinito** na lista para suportar muitos registros
+- **Tratamento de erro** mais granular na UI (toast de erro vindo da API, não só de validação de form)
+- **Acessibilidade**: `aria-labels` mais descritivos, navegação por teclado no stepper
+- **Backend em Node.js** substituindo o json-server, como indicado no diferencial do desafio
+
+---
+
+## Estrutura do `db.json`
+
+```json
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Daniel Alves da Silva",
+      "cpf": "000.000.000-99",
+      "rg": "1234567",
+      "birthDate": "1990-05-10",
+      "gender": "masculino",
+      "role": "Cargo 1",
+      "active": true,
+      "epiActivities": [
+        {
+          "activity": "Atividade 1",
+          "epis": [{ "name": "Calçado de segurança", "ca": "9356" }]
+        }
+      ],
+      "healthCertificate": null
+    }
+  ],
+  "steps": [
+    { "id": "1", "label": "Item 1", "completed": false }
+  ]
+}
+```
+
+---
+
+*Desenvolvido por José Ribamar — [LinkedIn](https://linkedin.com/in/seu-perfil) · [GitHub](https://github.com/seu-usuario)*
