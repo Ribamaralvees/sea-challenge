@@ -156,4 +156,4 @@ Os `thunks` chamam funções do `employeeService` e `stepService` em vez de usar
 
 ---
 
-*Desenvolvido por José Ribamar — [LinkedIn](https://linkedin.com/in/seu-perfil) · [GitHub](https://github.com/seu-usuario)*
+*Desenvolvido por José Ribamar — [LinkedIn](https://www.linkedin.com/in/jos%C3%A9-ribamar-01a6b6371/) · [GitHub](https://github.com/Ribamaralvees/)*
